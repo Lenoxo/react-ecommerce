@@ -5,16 +5,17 @@ import MyOrder from '../MyOrder'
 import MyOrders from '../MyOrders'
 import SignIn from '../SignIn'
 import NotFound from '../NotFound'
+import { Navbar } from '../../Components/Navbar'
 import './index.css'
 
 const AppRoutes = () => {
   // Para las rutas con useRoutes, es necesario guardar dentro de un array objetos con esta sintaxis.
   let routes = useRoutes([
     { path: '/', element: <Home /> },
-    { path: '/MyAccount', element: <MyAccount /> },
-    { path: '/MyOrder', element: <MyOrder /> },
-    { path: '/MyOrders', element: <MyOrders /> },
-    { path: '/SignIn', element: <SignIn /> },
+    { path: '/my-account', element: <MyAccount /> },
+    { path: '/my-order', element: <MyOrder /> },
+    { path: '/my-orders', element: <MyOrders /> },
+    { path: '/sign-in', element: <SignIn /> },
     { path: '/*', element: <NotFound /> },
   ])
   
@@ -25,6 +26,7 @@ function App() {
   return (
     <BrowserRouter>
       <AppRoutes />
+      <Navbar />
     </BrowserRouter>
   )
 }
