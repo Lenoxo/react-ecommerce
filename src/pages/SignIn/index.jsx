@@ -1,5 +1,10 @@
+import { Layout } from "../../Components/Layout"
 function SignIn() {
-  return <div className="bg-slate-400">SignIn</div>;
+  return (
+    <Layout>
+      Sign In
+    </Layout>
+  )
 }
 
-export default SignIn;
+export { SignIn }

@@ -1,9 +1,10 @@
+import { Layout } from "../../Components/Layout"
 function MyAccount() {
   return (
-    <div className='bg-slate-400'>
+    <Layout>
       MyAccount
-    </div>
+    </Layout>
   )
 }
 
-export default MyAccount
+export { MyAccount }

@@ -1,10 +1,10 @@
+import { Layout } from "../../Components/Layout"
 function NotFound() {
-    return (
-      <div className='bg-slate-400'>
-        NotFound
-      </div>
-    )
-  }
-  
-  export default NotFound
-  
+  return (
+    <Layout>
+      NotFound
+    </Layout>
+  )
+}
+
+export { NotFound }

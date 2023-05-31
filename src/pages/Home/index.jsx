@@ -1,9 +1,10 @@
+import { Layout } from "../../Components/Layout"
 function Home() {
   return (
-    <div className='bg-slate-400'>
+    <Layout>
       Home
-    </div>
+    </Layout>
   )
 }
 
-export default Home
+export { Home }

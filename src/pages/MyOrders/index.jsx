@@ -1,9 +1,10 @@
+import { Layout } from "../../Components/Layout"
 function MyOrders() {
   return (
-    <div className='bg-slate-400'>
+    <Layout>
       MyOrders
-    </div>
+    </Layout>
   )
 }
 
-export default MyOrders
+export { MyOrders }
