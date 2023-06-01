@@ -1,13 +1,16 @@
 import { useContext } from "react"
 import { ShoppingCartContext } from "../../pages/Context"
 
-function Card({ category, title, image, price }) { // Estos datos los recibo por props.
+function Card({ category, title, image, price, description }) { // Estos datos los recibo por props.
   const context = useContext(ShoppingCartContext)
-
+  function showProduct(productData) {
+    context.openProductDetail()
+    context.setProductToShow(productData)
+  }
   return (
     <div 
       className="bg-white cursor-pointer w-56 h-68 rounded-lg"
-      onClick={() => context.openProductDetail()}>
+      onClick={() => showProduct({ category, title, image, price, description })}>
     <figure className="relative mb-2 w-full h-4/5 rounded-lg">
         <span className="absolute bottom-0 left-0 bg-zinc-300 rounded-lg text-black text-xs m-2 px-3 py-0.5">
         {category}
