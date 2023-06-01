@@ -21,6 +21,15 @@ function ShoppingCartProvider({children}) {
     // Almacena en un estado, un array con los productos dentro del carrito de compras (ShoppingCart)
     const [cartProducts, setCartProducts] = useState([])
 
+    // CheckoutSideMenu
+
+    const [isCheckoutSideMenuOpen, setIsCheckoutSideMenuOpen] = useState(false)
+    function openCheckoutSideMenu() {
+        setIsCheckoutSideMenuOpen(true)
+    }
+    function closeCheckoutSideMenu() {
+        setIsCheckoutSideMenuOpen(false)
+    }
 
     return (
         // Exporto así el elemento para que sea un poco más facil de leer desde otros archivos, como en App/index.jsx
@@ -33,7 +42,10 @@ function ShoppingCartProvider({children}) {
             productToShow,
             setProductToShow,
             cartProducts,
-            setCartProducts
+            setCartProducts,
+            isCheckoutSideMenuOpen,
+            openCheckoutSideMenu,
+            closeCheckoutSideMenu
         }}>
             {children}
         </ShoppingCartContext.Provider>

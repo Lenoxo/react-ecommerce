@@ -10,7 +10,10 @@ function Card({ category, title, image, price, description }) { // Estos datos l
     context.setProductToShow(productDetailData)
   }
 
-  function addToCart(productCartData) { // Esta funcion solo se llama cuando los usuarios hacen click en el simbolo de añadir dentro de la Card.
+  function addToCart(event, productCartData) { // Esta funcion solo se llama cuando los usuarios hacen click en el simbolo de añadir dentro de la Card.
+    // Este método permite evitar que se cruce el click que se da sobre la Card para abrir el productDetail, del click que se da para añadir al carrito el producto.
+    event.stopPropagation()
+    context.openCheckoutSideMenu()
     context.setCount(context.count + 1)
     context.setCartProducts([...context.cartProducts, productCartData])
   }
@@ -29,7 +32,7 @@ function Card({ category, title, image, price, description }) { // Estos datos l
         />
         <button 
           className="absolute top-0 right-0 flex justify-center items-center m-2 w-6 h-6"
-          onClick={() => addToCart(productData)}
+          onClick={(event) => addToCart(event, productData)}
         >
           {/* Este svg es el del icono de añadir al carrito. */}
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1} stroke="currentColor" className="w-6 h-6 bg-white rounded-full">
