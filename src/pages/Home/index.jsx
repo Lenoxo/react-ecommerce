@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import { Layout } from "../../Components/Layout"
 import { Card } from "../../Components/Card"
+import { ProductDetail } from "../../Components/ProductDetail"
 const API = "https://api.escuelajs.co/api/v1/products"
 
 function Home() {
@@ -25,6 +26,7 @@ function Home() {
           })
         }
       </section>
+      <ProductDetail />
     </Layout>
   )
 }
