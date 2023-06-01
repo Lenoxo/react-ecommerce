@@ -17,10 +17,13 @@ function Card({ category, title, image, price }) { // Estos datos los recibo por
           alt={title}
         />
         <button 
-          className="absolute top-0 right-0 flex justify-center items-center rounded-full bg-white m-2 p-1 w-6 h-6"
+          className="absolute top-0 right-0 flex justify-center items-center m-2 w-6 h-6"
           onClick={() => context.setCount(context.count + 1)}
         >
-          <p>+</p>
+          {/* Este svg es el del icono de añadir al carrito. */}
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4/5 h-4/5 bg-white rounded-full">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+          </svg>
         </button>
     </figure>
     <p className="flex justify-between">
