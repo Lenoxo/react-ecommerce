@@ -21,7 +21,7 @@ function Card({ category, title, image, price }) { // Estos datos los recibo por
           onClick={() => context.setCount(context.count + 1)}
         >
           {/* Este svg es el del icono de añadir al carrito. */}
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4/5 h-4/5 bg-white rounded-full">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" class="w-4/5 h-4/5 bg-white rounded-full">
             <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
           </svg>
         </button>
