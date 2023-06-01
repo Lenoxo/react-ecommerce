@@ -8,15 +8,19 @@ function ShoppingCartProvider({children}) {
     const [count, setCount] = useState(0)
 
     // Relacionado a ProductDetail
-    const [isProductDetailOpen, setIsProductDetailOpen] = useState(false)
+    const [isProductDetailOpen, setIsProductDetailOpen] = useState(false) // Almacena un valor para posteriormente mostrar/ocultar ProductDetail.
+    const [productToShow, setProductToShow] = useState({}) // Almacena los datos del producto que se muestra en ProductDetail.
     function openProductDetail() {
         setIsProductDetailOpen(true)
     }
     function closeProductDetail() {
         setIsProductDetailOpen(false)
     }
+    // ProductCart
 
-    const [productToShow, setProductToShow] = useState({})
+    // Almacena en un estado, un array con los productos dentro del carrito de compras (ShoppingCart)
+    const [cartProducts, setCartProducts] = useState([])
+
 
     return (
         // Exporto así el elemento para que sea un poco más facil de leer desde otros archivos, como en App/index.jsx
@@ -27,7 +31,9 @@ function ShoppingCartProvider({children}) {
             closeProductDetail,
             isProductDetailOpen,
             productToShow,
-            setProductToShow
+            setProductToShow,
+            cartProducts,
+            setCartProducts
         }}>
             {children}
         </ShoppingCartContext.Provider>
