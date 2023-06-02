@@ -1,8 +1,8 @@
 import { useContext } from "react"
 import { ShoppingCartContext } from "../../pages/Context"
 
-function Card({ category, title, image, price, description }) { // Estos datos los recibo por props.
-  const productData = { category, title, image, price, description } // Guardo los datos dentro para enviarlos de forma más sencilla a otras funciones.
+function Card({ category, title, image, price, description, id }) { // Estos datos los recibo por props.
+  const productData = { category, title, image, price, description, id } // Guardo los datos dentro para enviarlos de forma más sencilla a otras funciones.
   const context = useContext(ShoppingCartContext)
 
   function showProduct(productDetailData) {

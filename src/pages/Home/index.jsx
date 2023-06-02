@@ -22,8 +22,7 @@ function Home() {
         {
           products?.map(product => {
             // Envio por props los datos necesarios para renderizar las Cards.
-            console.log(product)
-            return <Card key={product.id} category={product.category.name} image={product.category.image} title={product.title} price={product.price} description={product.description}/>
+            return <Card key={product.id} id={product.id} category={product.category.name} image={product.category.image} title={product.title} price={product.price} description={product.description}/>
           })
         }
       </section>

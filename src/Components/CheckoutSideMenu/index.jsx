@@ -1,9 +1,9 @@
 import { useContext } from "react"
 import { ShoppingCartContext } from "../../pages/Context"
+import { OrderCard } from "../OrderCard"
 
 function CheckoutSideMenu() {
     const context = useContext(ShoppingCartContext)
-    const { category, title, image, price, description } = context.productToShow
     return (
         // Con tailwind, se pueden poner propiedades css especificas usando los corchetes [] con el valor de las propiedades dentro.
         <aside 
@@ -17,6 +17,13 @@ function CheckoutSideMenu() {
                     </svg>            
                 </button>
             </div>
+            { // Aquí renderizo cada elemento dentro del cartProducts.
+                context.cartProducts.map((product) => {
+                    return (
+                        <OrderCard key={product.id} productInfo={product} />
+                    )
+                })
+            }
         </aside>
     )
 }
