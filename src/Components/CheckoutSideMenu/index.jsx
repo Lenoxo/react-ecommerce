@@ -1,6 +1,7 @@
 import { useContext } from "react"
 import { ShoppingCartContext } from "../../pages/Context"
 import { OrderCard } from "../OrderCard"
+import { totalPrice } from "../utils"
 
 function CheckoutSideMenu() {
     const context = useContext(ShoppingCartContext)
@@ -10,6 +11,7 @@ function CheckoutSideMenu() {
         const updatedCartProducts = context.cartProducts.filter(product => product.id != id)
         context.setCartProducts(updatedCartProducts)
     }
+
     return (
         // Con tailwind, se pueden poner propiedades css especificas usando los corchetes [] con el valor de las propiedades dentro.
         <aside // Dependiendo del valor de isCheckoutSideMenuOpen, se muestra/oculta CheckoutSideMenu.
@@ -32,6 +34,10 @@ function CheckoutSideMenu() {
                     })
                 }
             </div>
+            <p className="flex justify-between items-center px-6">
+                <span className="font-light text-lg">Total:</span>
+                <span className="font-medium text-xl">${totalPrice(context.cartProducts)}</span>
+            </p>
         </aside>
     )
 }

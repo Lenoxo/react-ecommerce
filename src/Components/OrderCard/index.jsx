@@ -9,7 +9,7 @@ function OrderCard(props) {
                 <p className="text-sm font-light">{title}</p>
             </div>
             <div className="flex justify-between items-center gap-2">
-                <p className="text-lg font-medium">${price}</p>
+                <p className="text-lg font-medium text-neutral-700">${price}</p>
                 <button onClick={() => props.handleDelete(id)} className="cursor-pointer">
                     {/* Este es el icono de eliminar del Cart */}
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
