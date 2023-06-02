@@ -30,6 +30,9 @@ function ShoppingCartProvider({children}) {
         setIsCheckoutSideMenuOpen(false)
     }
 
+    // Este estado almacena la orden cuando se hace click en Checkout en CheckoutSideMen
+    const [order, setOrder] = useState([])
+
     return (
         // Exporto así el elemento para que sea un poco más facil de leer desde otros archivos, como en App/index.jsx
         <ShoppingCartContext.Provider value={{
@@ -44,7 +47,9 @@ function ShoppingCartProvider({children}) {
             setCartProducts,
             isCheckoutSideMenuOpen,
             openCheckoutSideMenu,
-            closeCheckoutSideMenu
+            closeCheckoutSideMenu,
+            order,
+            setOrder
         }}>
             {children}
         </ShoppingCartContext.Provider>

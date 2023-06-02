@@ -11,6 +11,17 @@ function CheckoutSideMenu() {
         const updatedCartProducts = context.cartProducts.filter(product => product.id != id)
         context.setCartProducts(updatedCartProducts)
     }
+    // Añade al estado order los productos dentro de cartProducts. Después limpia cartProducts.
+    function handleCheckout() {
+        const newOrder = {
+            date: 'jun 2 2023',
+            products: context.cartProducts,
+            totalProducts: context.cartProducts.length,
+            totalPrice: totalPrice(context.cartProducts)
+        }
+        context.setOrder([...context.order, newOrder])
+        context.setCartProducts([])
+    }
 
     return (
         // Con tailwind, se pueden poner propiedades css especificas usando los corchetes [] con el valor de las propiedades dentro.
@@ -25,7 +36,7 @@ function CheckoutSideMenu() {
                     </svg>            
                 </button>
             </div>
-            <div className="overflow-y-scroll">
+            <div className="overflow-y-scroll flex-1">
                 { // Aquí renderizo cada elemento dentro del cartProducts usando el componente OrderCard.
                     context.cartProducts.map((product) => {
                         return (
@@ -34,10 +45,13 @@ function CheckoutSideMenu() {
                     })
                 }
             </div>
-            <p className="flex justify-between items-center px-6">
-                <span className="font-light text-lg">Total:</span>
-                <span className="font-medium text-xl">${totalPrice(context.cartProducts)}</span>
-            </p>
+            <div className="px-6 pb-6">
+                <p className="flex justify-between items-center pb-2">
+                    <span className="font-light text-lg">Total:</span>
+                    <span className="font-medium text-xl">${totalPrice(context.cartProducts)}</span>
+                </p>
+                <button className="bg-black rounded-lg text-white w-full h-9 font-bold" onClick={() => handleCheckout()}>Checkout</button>
+            </div>
         </aside>
     )
 }
