@@ -1,5 +1,4 @@
 import { createContext, useState } from "react"
-import { ProductDetail } from "../../Components/ProductDetail"
 
 const ShoppingCartContext = createContext()
 
