@@ -17,13 +17,15 @@ function CheckoutSideMenu() {
                     </svg>            
                 </button>
             </div>
-            { // Aquí renderizo cada elemento dentro del cartProducts.
-                context.cartProducts.map((product) => {
-                    return (
-                        <OrderCard key={product.id} productInfo={product} />
-                    )
-                })
-            }
+            <div className="overflow-y-scroll">
+                { // Aquí renderizo cada elemento dentro del cartProducts.
+                    context.cartProducts.map((product) => {
+                        return (
+                            <OrderCard key={product.id} productInfo={product} />
+                        )
+                    })
+                }
+            </div>
         </aside>
     )
 }

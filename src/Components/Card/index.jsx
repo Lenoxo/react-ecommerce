@@ -17,6 +17,35 @@ function Card({ category, title, image, price, description, id }) { // Estos dat
     context.setCount(context.count + 1)
     context.setCartProducts([...context.cartProducts, productCartData])
   }
+
+  function renderIcon(id) {
+    const isInCart = context.cartProducts.filter((product) => product.id === id).length > 0
+    console.log(isInCart)
+    if (isInCart) {
+      return (
+        <button 
+            className="absolute top-0 right-0 flex justify-center items-center m-2 w-6 h-6"
+          >
+            {/* Este svg es el del icono del check, cuando el producto está dentro del carrito.*/}
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1} stroke="white" className="w-6 h-6 bg-black rounded-full">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+            </svg>
+        </button>
+      )
+    } else {
+      return (
+      <button 
+          className="absolute top-0 right-0 flex justify-center items-center m-2 w-6 h-6"
+          onClick={(event) => addToCart(event, productData)}
+        >
+          {/* Este svg es el del icono de añadir al carrito. */}
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1} stroke="currentColor" className="w-6 h-6 bg-white rounded-full">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+          </svg>
+      </button>
+      )
+    }
+  }
   return (
     <div 
       className="bg-white cursor-pointer w-56 h-68 rounded-lg"
@@ -30,15 +59,7 @@ function Card({ category, title, image, price, description, id }) { // Estos dat
           src={image}
           alt={title}
         />
-        <button 
-          className="absolute top-0 right-0 flex justify-center items-center m-2 w-6 h-6"
-          onClick={(event) => addToCart(event, productData)}
-        >
-          {/* Este svg es el del icono de añadir al carrito. */}
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1} stroke="currentColor" className="w-6 h-6 bg-white rounded-full">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-          </svg>
-        </button>
+        {renderIcon(productData.id)}
     </figure>
     <p className="flex justify-between">
         <span className="text-sm font-light">{title}</span>
