@@ -19,8 +19,7 @@ function Card({ category, title, image, price, description, id }) { // Estos dat
   }
 
   function renderIcon(id) {
-    const isInCart = context.cartProducts.filter((product) => product.id === id).length > 0
-    console.log(isInCart)
+    const isInCart = context.cartProducts.some((product) => product.id === id)
     if (isInCart) {
       return (
         <button 

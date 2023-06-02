@@ -4,6 +4,10 @@ import { OrderCard } from "../OrderCard"
 
 function CheckoutSideMenu() {
     const context = useContext(ShoppingCartContext)
+    const handleDelete = (id) => {
+        const updatedCartProducts = context.cartProducts.filter(product => product.id != id)
+        context.setCartProducts(updatedCartProducts)
+    }
     return (
         // Con tailwind, se pueden poner propiedades css especificas usando los corchetes [] con el valor de las propiedades dentro.
         <aside 
@@ -21,7 +25,7 @@ function CheckoutSideMenu() {
                 { // Aquí renderizo cada elemento dentro del cartProducts.
                     context.cartProducts.map((product) => {
                         return (
-                            <OrderCard key={product.id} productInfo={product} />
+                            <OrderCard key={product.id} productInfo={product} handleDelete={handleDelete} />
                         )
                     })
                 }
