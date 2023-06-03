@@ -17,6 +17,8 @@ const AppRoutes = () => {
     { path: '/my-account', element: <MyAccount /> },
     { path: '/my-order', element: <MyOrder /> },
     { path: '/my-orders/last', element: <MyOrder /> },
+    // Con usar :id, se deja esta ultima parte de la ruta como una variable.
+    { path: '/my-orders/:id', element: <MyOrder /> },
     { path: '/my-orders', element: <MyOrders /> },
     { path: '/sign-in', element: <SignIn /> },
     { path: '/*', element: <NotFound /> },

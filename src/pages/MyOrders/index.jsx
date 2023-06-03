@@ -8,15 +8,14 @@ function MyOrders() {
   const context = useContext(ShoppingCartContext)
   return (
     <Layout>
-      MyOrders
+      My Orders
       {context.order.map((order, index) => {
         return (
-          // Más adelante modificaré ese index para permitir que si se pueda ir a la orden (order) especifica.
-          <Link to={`/my-orders/${index}`}>
+          <Link key={index} to={`/my-orders/${index}`}>
             <OrdersCard
-              key={index}
               totalProducts={order.totalProducts}
               totalPrice={order.totalPrice}
+              date={order.date}
             />
           </Link>
         )
