@@ -15,7 +15,6 @@ function Card({ category, title, image, price, description, id }) {
   function addToCart(event, productCartData) {
     event.stopPropagation() // Evita que se abra el detalle del producto al hacer clic en el botón de añadir al carrito
     context.openCheckoutSideMenu()
-    context.setCount(context.count + 1)
     context.setCartProducts([...context.cartProducts, productCartData])
   }
 
