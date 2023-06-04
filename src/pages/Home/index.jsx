@@ -14,7 +14,7 @@ function Home() {
       {/* Esta es la sección de los productos*/}
       <section className="grid grid-cols-3 gap-2 w-full max-w-screen-lg place-items-center">
         {
-          context.products?.map(product => {
+          context.filteredProducts?.map(product => {
             // Envio por props los datos necesarios para renderizar las Cards.
             return <Card key={product.id} id={product.id} category={product.category.name} image={product.category.image} title={product.title} price={product.price} description={product.description}/>
           })
