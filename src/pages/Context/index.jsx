@@ -46,25 +46,45 @@ function ShoppingCartProvider({ children }) {
     }, []) // El array de dependencias vacio está aquí para hacer que se ejecute solo una vez este efecto.
     
     // Almacena el valor del input en Home.
-    const [productSearchVaule, setProductSearchValue] = useState('')
+    const [productSearchValue, setProductSearchValue] = useState(null)
+    // Almacena el valor de la categoria que viene de Navbar.
+    const [productCategoryValue, setProductCategoryValue] = useState(null)
     // Almacena los productos filtrados.
-    const [filteredProducts, setFilteredProducts] = useState()
+    const [filteredProducts, setFilteredProducts] = useState(products)
 
     // Filtra los productos, recibiendo un array y un texto como valor de búsqueda.
     function filteredProductsByTitle(arrayWithProducts, searchValue) {
         // Aquí uso toLowerCase para que no importe si el titulo del producto, o lo que los usuarios escriben esté en mayúsculas o minúsculas.
         return arrayWithProducts?.filter(product => product.title.toLowerCase().includes(searchValue.toLowerCase()))
     }
-
-  // Este efecto modifica el estado de filteredProducts cuando cambia el valor de productSearchVaule
-  useEffect(() => {
-    if (productSearchVaule.length > 0) {
-      setFilteredProducts(filteredProductsByTitle(products, productSearchVaule))
-    } else {
-      setFilteredProducts(products) // En los casos en que productSearchVaule está vacio, dejo el estado definido por products para que se puedan renderizar los componentes facilmente desde Home.
+    function filteredProductsByCategory(arrayWithProducts, categoryValue) {
+        // Aquí uso toLowerCase para que no importe si el titulo del producto, o lo que los usuarios escriben esté en mayúsculas o minúsculas.
+        return arrayWithProducts?.filter(product => product.category.name.toLowerCase().includes(categoryValue.toLowerCase()))
     }
-  }, [products, productSearchVaule])
+    function filterBy(searchType, products, productSearchValue, productCategoryValue) {
+      if (searchType === 'by_title') {
+        return filteredProductsByTitle(products, productSearchValue)
+      }
+      if (searchType === 'by_category') {
+        return filteredProductsByCategory(products, productCategoryValue)
+      }
+      if (searchType === 'title_and_category') {
+        return filteredProductsByCategory(products, productCategoryValue).filter(product => product.title.toLowerCase().includes(productSearchValue.toLowerCase()))
+      }
+      if (!searchType) {
+        return products
+      }
+    }
 
+  // Este efecto modifica el estado de filteredProducts cuando cambia el valor de productSearchValue
+  useEffect(() => {
+    if (productSearchValue && productCategoryValue) setFilteredProducts(filterBy('title_and_category', products, productSearchValue, productCategoryValue))
+    if (productSearchValue && !productCategoryValue) setFilteredProducts(filterBy('by_title', products, productSearchValue, productCategoryValue))
+    if (!productSearchValue && productCategoryValue) setFilteredProducts(filterBy('by_category', products, productSearchValue, productCategoryValue))
+    if (!productSearchValue && !productCategoryValue) setFilteredProducts(filterBy(null, products, productSearchValue, productCategoryValue))
+  }, [products, productSearchValue, productCategoryValue])
+  console.log(filteredProducts)
+  
   return (
     // Exporto así el elemento para que sea un poco más facil de leer desde otros archivos, como en App/index.jsx
     <ShoppingCartContext.Provider
@@ -85,9 +105,11 @@ function ShoppingCartProvider({ children }) {
         setOrder,
         products,
         setProducts,
-        productSearchVaule,
+        productSearchValue,
         setProductSearchValue,
-        filteredProducts
+        filteredProducts,
+        productCategoryValue,
+        setProductCategoryValue
       }}
     >
       {children}

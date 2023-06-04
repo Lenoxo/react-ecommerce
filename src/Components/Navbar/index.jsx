@@ -11,17 +11,17 @@ function Navbar() {
         {/* Este es el logo de la página (por ahora), por lo que está con unos estilos diferentes */}
         <li className="font-semibold text-lg">Shopi</li>
         {/* En el resto de items, mando por props to y activeStyle */}
-        <NavbarItem to="/" activeStyle={activeStyle}>All</NavbarItem>
-        <NavbarItem to="/clothes" activeStyle={activeStyle}>Clothes</NavbarItem>
-        <NavbarItem to="/electronics" activeStyle={activeStyle}>Electronics</NavbarItem>
-        <NavbarItem to="/furnitures" activeStyle={activeStyle}>Furnitures</NavbarItem>
-        <NavbarItem to="/toys" activeStyle={activeStyle}>Toys</NavbarItem>
-        <NavbarItem to="/others" activeStyle={activeStyle}>Others</NavbarItem>
+        <NavbarItem to="/" activeStyle={activeStyle} category={'All'}>All</NavbarItem>
+        <NavbarItem to="/clothes" activeStyle={activeStyle} category={'Clothes'}>Clothes</NavbarItem>
+        <NavbarItem to="/electronics" activeStyle={activeStyle} category={'Electronics'}>Electronics</NavbarItem>
+        <NavbarItem to="/furnitures" activeStyle={activeStyle} category={'Furnitures'}>Furnitures</NavbarItem>
+        <NavbarItem to="/toys" activeStyle={activeStyle} category={'Toys'}>Toys</NavbarItem>
+        <NavbarItem to="/others" activeStyle={activeStyle} category={'Others'}>Others</NavbarItem>
       </ul>
       <ul className="flex items-center gap-3">
         <li className="text-black/60">example@example.com</li>
-        <NavbarItem to="/my-orders" activeStyle={activeStyle}>My Orders</NavbarItem>
-        <NavbarItem to="/sign-in" activeStyle={activeStyle}>Sign In</NavbarItem>
+        <NavbarItem to="/my-orders" activeStyle={activeStyle} category={'options'}>My Orders</NavbarItem>
+        <NavbarItem to="/sign-in" activeStyle={activeStyle} category={'options'}>Sign In</NavbarItem>
         <li className="flex items-center">
           {/* Este es el icono del carrito de compras (ShoppingCart) */}
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
@@ -37,11 +37,13 @@ function Navbar() {
 }
 
 // Aquí uso children para poner el texto en el interior de los elementos.
-function NavbarItem({ to, activeStyle, children }) {
+function NavbarItem({ to, activeStyle, children, category }) {
+  const context = useContext(ShoppingCartContext)
   return (
     <li>
       <NavLink
         to={to}
+        onClick={() => context.setProductCategoryValue(category)}
         className={({ isActive }) => (isActive ? activeStyle : "")}
       >
         {children}
