@@ -9,7 +9,7 @@ function Home() {
   return (
     <Layout>
       <h1 className="font-extralight text-xl">Time to get you something great!</h1>
-      <input type="text" className="p-3 my-6 border border-slate-950 rounded-lg focus:outline-none" placeholder="Search a product" onChange={(event) => context.setProductSearchValue(event.target.value)}/>
+      <input type="text" className="p-3 my-6 border border-slate-950 dark:bg-zinc-800 dark:border-white rounded-lg focus:outline-none" placeholder="Search a product" onChange={(event) => context.setProductSearchValue(event.target.value)}/>
       {/* Esta es la sección de los productos*/}
       <section className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1 w-full max-w-screen-lg place-items-center">
         {

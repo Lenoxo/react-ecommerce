@@ -1,7 +1,7 @@
 function OrderCard(props) {
     const { title, image, price, id } = props.productInfo
     return (
-        <div className="flex justify-between items-center mx-3 mb-3">
+        <div className="flex justify-between items-center mx-3 mb-3 dark:text-white">
             <div className="flex justify-between items-center gap-2">
                 <figure className="w-20 h-20">
                     <img src={image} alt="" className="w-full h-full object-cover rounded-lg"/>
@@ -9,7 +9,7 @@ function OrderCard(props) {
                 <p className="text-sm font-light">{title}</p>
             </div>
             <div className="flex justify-between items-center gap-2">
-                <p className="text-lg font-medium text-neutral-700">${price}</p>
+                <p className="text-lg font-medium font-medium">${price}</p>
                 {/* Solo si se recibe por props handleDelete, se renderiza el icono de eliminar del Cart. */}
                 {props.handleDelete && (
                     <button onClick={() => props.handleDelete(id)} className="cursor-pointer">

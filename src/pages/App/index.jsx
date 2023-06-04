@@ -26,11 +26,12 @@ const AppRoutes = () => {
     { path: '/my-orders/:id', element: <MyOrder /> },
     { path: '/my-orders', element: <MyOrders /> },
     { path: '/sign-in', element: <SignIn /> },
-    { path: '/*', element: <NotFound /> },
+    { path: '/*', element: <NotFound /> }, // Captura todas las rutas no definidas
   ])
   
   return routes
 }
+
 
 function App() {
   return (
