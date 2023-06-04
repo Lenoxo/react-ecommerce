@@ -17,7 +17,7 @@ Shopi es un e-commerce desarrollado en React.js utilizando Vite.js y TailwindCSS
 
 ### Demo
 
-![Demo de Shopi]()
+![Demo de Shopi](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNzdmM2I5NmRhNWM2ZDQ5MDEwYjBiZDAyOTRhYmIwMmI1OGJkZTVhZSZlcD12MV9pbnRlcm5hbF9naWZzX2dpZklkJmN0PWc/gtOmlOjB0yE9mHueaS/giphy.gif)
 
 ### Características
 
