@@ -4,9 +4,6 @@ const API = "https://api.escuelajs.co/api/v1/products"
 const ShoppingCartContext = createContext()
 
 function ShoppingCartProvider({ children }) {
-  // Conteo de items en el ShoppingCart
-  const [count, setCount] = useState(0)
-
   // Relacionado a ProductDetail
   const [isProductDetailOpen, setIsProductDetailOpen] = useState(false) // Almacena un valor para posteriormente mostrar/ocultar ProductDetail.
   const [productToShow, setProductToShow] = useState({}) // Almacena los datos del producto que se muestra en ProductDetail.
@@ -50,7 +47,7 @@ function ShoppingCartProvider({ children }) {
     // Almacena el valor de la categoria que viene de Navbar.
     const [productCategoryValue, setProductCategoryValue] = useState(null)
     // Almacena los productos filtrados.
-    const [filteredProducts, setFilteredProducts] = useState(products)
+    const [filteredProducts, setFilteredProducts] = useState([])
 
     // Filtra los productos, recibiendo un array y un texto como valor de búsqueda.
     function filteredProductsByTitle(arrayWithProducts, searchValue) {
@@ -82,8 +79,7 @@ function ShoppingCartProvider({ children }) {
     if (productSearchValue && !productCategoryValue) setFilteredProducts(filterBy('by_title', products, productSearchValue, productCategoryValue))
     if (!productSearchValue && productCategoryValue) setFilteredProducts(filterBy('by_category', products, productSearchValue, productCategoryValue))
     if (!productSearchValue && !productCategoryValue) setFilteredProducts(filterBy(null, products, productSearchValue, productCategoryValue))
-  }, [products, productSearchValue, productCategoryValue])
-  console.log(filteredProducts)
+  },[products, productSearchValue, productCategoryValue])
   
   return (
     // Exporto así el elemento para que sea un poco más facil de leer desde otros archivos, como en App/index.jsx

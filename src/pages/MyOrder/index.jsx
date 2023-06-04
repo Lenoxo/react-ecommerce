@@ -1,4 +1,4 @@
-import { useContext } from "react"
+import { useContext, useEffect } from "react"
 import { ShoppingCartContext } from "../Context"
 import { Layout } from "../../Components/Layout"
 import { OrderCard } from "../../Components/OrderCard"
@@ -14,6 +14,10 @@ function MyOrder() {
   if (orderIndex === 'last') {
     orderIndex = context.order?.length - 1
   }
+  // Establecer ProductSearchValue como null al cargar el componente
+  useEffect(() => {
+    context.setProductSearchValue(null)
+  }, [])
   return (
     <Layout>
       <div className="flex justify-center items-center relative w-80 mb-4">

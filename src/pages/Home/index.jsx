@@ -6,7 +6,6 @@ import { ShoppingCartContext } from "../Context"
 
 function Home() {
   const context = useContext(ShoppingCartContext)
-
   return (
     <Layout>
       <h1 className="font-extralight text-xl">Time to get you something great!</h1>
