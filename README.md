@@ -51,6 +51,4 @@ Este proyecto está licenciado bajo la [Licencia MIT](LICENSE).
 
 Lenoxo (Emanuel Padilla)
 
-No dudes en contactarme en [eman
-
-uehl159@gmail.com](mailto:emanuehl159@gmail.com) si tienes alguna pregunta, sugerencia o comentario.
+No dudes en contactarme en [emanuehl159@gmail.com](mailto:emanuehl159@gmail.com) si tienes alguna pregunta, sugerencia o comentario.
