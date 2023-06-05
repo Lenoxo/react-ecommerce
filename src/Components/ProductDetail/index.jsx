@@ -12,7 +12,7 @@ function ProductDetail() {
     // Componente que muestra los detalles del producto
     <aside
       // Aplicamos clases CSS condicionalmente para mostrar u ocultar el componente
-      className={`${context.isProductDetailOpen ? 'flex' : 'hidden'} flex flex-col fixed right-0 top-[60px] w-[360px] bg-white dark:bg-inherit border border-inherit rounded-lg h-[calc(100vh-60px)]`}
+      className={`${context.isProductDetailOpen ? 'flex' : 'hidden'} flex flex-col fixed z-20 right-0 top-0 w-screen h-full overflow-y-auto md:top-[60px] md:w-[360px] bg-white dark:bg-inherit border border-inherit rounded-lg md:h-[calc(100vh-60px)]`}
     >
       <div className="flex justify-between items-center p-6">
         <h2 className="font-medium text-xl">Detail</h2>
