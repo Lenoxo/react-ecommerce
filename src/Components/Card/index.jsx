@@ -1,4 +1,4 @@
-import { useContext } from "react"
+import { useContext, useState, useEffect } from "react"
 import { ShoppingCartContext } from "../../pages/Context"
 
 function Card({ category, title, image, price, description, id }) {
@@ -25,23 +25,39 @@ function Card({ category, title, image, price, description, id }) {
       return (
         <button className="absolute top-0 right-0 flex justify-center items-center m-2 w-6 h-6">
           {/* Ícono del check cuando el producto está en el carrito */}
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1} stroke="white" className="w-6 h-6 bg-black rounded-full">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={1}
+            stroke="white"
+            className="w-6 h-6 bg-black rounded-full"
+          >
             <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
           </svg>
         </button>
       )
     } else {
       return (
-        <button className="absolute top-0 right-0 flex justify-center items-center m-2 w-6 h-6" onClick={(event) => addToCart(event, productData)}>
+        <button
+          className="absolute top-0 right-0 flex justify-center items-center m-2 w-6 h-6"
+          onClick={(event) => addToCart(event, productData)}
+        >
           {/* Ícono de añadir al carrito */}
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1} stroke="currentColor" className="w-6 h-6 bg-white dark:bg-black rounded-full">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={1}
+            stroke="currentColor"
+            className="w-6 h-6 bg-white dark:bg-black rounded-full"
+          >
             <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
           </svg>
         </button>
       )
     }
   }
-
   return (
     <div className="bg-inherit cursor-pointer w-56 h-68 rounded-lg mb-6" onClick={() => showProduct(productData)}>
       <figure className="relative mb-2 w-full h-4/5 rounded-lg">

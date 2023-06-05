@@ -9,7 +9,7 @@ function Navbar() {
   return (
     <nav className="flex flex-col lg:flex-row lg:justify-between lg:items-center fixed z-10 lg:w-screen py-4 px-8 text-sm font-light rounded-lg top-0 border-b-2 border-r-2 lg:border-r-0 bg-white dark:text-white dark:bg-zinc-900">
       {/* Este es el logo de la página (por ahora), por lo que está con unos estilos diferentes */}
-      <h2 className="font-bold text-md cursor-default">Shopi</h2>
+      <h2 className="font-bold text-md cursor-default">Reactify</h2>
       <button className="flex justify-center lg:hidden" onClick={() => setHideNavbarItems(!hideNavbarItems)}>
         {/* Icono de mostrar/ocultar elementos del NavBar */}
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">

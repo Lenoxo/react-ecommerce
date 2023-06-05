@@ -4,6 +4,8 @@ const API = "https://api.escuelajs.co/api/v1/products"
 const ShoppingCartContext = createContext()
 
 function ShoppingCartProvider({ children }) {
+  // Estado de carga
+  const [isLoading, setIsLoading] = useState(true)
   // Relacionado a ProductDetail
   const [isProductDetailOpen, setIsProductDetailOpen] = useState(false) // Almacena un valor para posteriormente mostrar/ocultar ProductDetail.
   const [productToShow, setProductToShow] = useState({}) // Almacena los datos del producto que se muestra en ProductDetail.
@@ -14,10 +16,10 @@ function ShoppingCartProvider({ children }) {
     setIsProductDetailOpen(false)
   }
   // ProductCart
-
+  
   // Almacena en un estado, un array con los productos dentro del carrito de compras (ShoppingCart)
   const [cartProducts, setCartProducts] = useState([])
-
+  
   // CheckoutSideMenu
 
   const [isCheckoutSideMenuOpen, setIsCheckoutSideMenuOpen] = useState(false)
@@ -37,22 +39,25 @@ function ShoppingCartProvider({ children }) {
   // Aquí uso useEffect porque estoy consumiendo la API de Platzi Fake Store
   useEffect(() => {
     fetch(API)
-      .then((response) => response.json())
-      .then((data) => setProducts(data))
-      .catch((error) => console.log(error))
-    }, []) // El array de dependencias vacio está aquí para hacer que se ejecute solo una vez este efecto.
-    
+    .then((response) => response.json())
+    .then((data) => {
+      setProducts(data)
+      setIsLoading(false)
+    })
+    .catch((error) => console.log(error))
+  }, []) // El array de dependencias vacio está aquí para hacer que se ejecute solo una vez este efecto.
+  
     // Almacena el valor del input en Home.
     const [productSearchValue, setProductSearchValue] = useState(null)
     // Almacena el valor de la categoria que viene de Navbar.
     const [productCategoryValue, setProductCategoryValue] = useState(null)
     // Almacena los productos filtrados.
     const [filteredProducts, setFilteredProducts] = useState([])
-
+    
     // Filtra los productos, recibiendo un array y un texto como valor de búsqueda.
     function filteredProductsByTitle(arrayWithProducts, searchValue) {
-        // Aquí uso toLowerCase para que no importe si el titulo del producto, o lo que los usuarios escriben esté en mayúsculas o minúsculas.
-        return arrayWithProducts?.filter(product => product.title.toLowerCase().includes(searchValue.toLowerCase()))
+      // Aquí uso toLowerCase para que no importe si el titulo del producto, o lo que los usuarios escriben esté en mayúsculas o minúsculas.
+      return arrayWithProducts?.filter(product => product.title.toLowerCase().includes(searchValue.toLowerCase()))
     }
     function filteredProductsByCategory(arrayWithProducts, categoryValue) {
         // Aquí uso toLowerCase para que no importe si el titulo del producto, o lo que los usuarios escriben esté en mayúsculas o minúsculas.
@@ -84,12 +89,12 @@ function ShoppingCartProvider({ children }) {
   return (
     // Exporto así el elemento para que sea un poco más facil de leer desde otros archivos, como en App/index.jsx
     <ShoppingCartContext.Provider
-      value={{
-        openProductDetail,
-        closeProductDetail,
-        isProductDetailOpen,
-        productToShow,
-        setProductToShow,
+    value={{
+      openProductDetail,
+      closeProductDetail,
+      isProductDetailOpen,
+      productToShow,
+      setProductToShow,
         cartProducts,
         setCartProducts,
         isCheckoutSideMenuOpen,
@@ -103,7 +108,8 @@ function ShoppingCartProvider({ children }) {
         setProductSearchValue,
         filteredProducts,
         productCategoryValue,
-        setProductCategoryValue
+        setProductCategoryValue,
+        isLoading
       }}
     >
       {children}
