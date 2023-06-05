@@ -1,6 +1,6 @@
-# Shopi
+# Reactify
 
-Shopi es un e-commerce desarrollado en React.js utilizando Vite.js y TailwindCSS. La aplicación cuenta con las siguientes características principales:
+Reactify es un e-commerce desarrollado en React.js utilizando Vite.js y TailwindCSS. La aplicación cuenta con las siguientes características principales:
 
 - **Búsqueda de productos:** Permite buscar productos por categoría y título para facilitar la navegación y encontrar los productos deseados.
 - **Añadir productos al carrito:** Permite añadir productos al carrito de compras con un solo clic, lo que facilita la selección y compra de múltiples productos.
@@ -17,7 +17,7 @@ Shopi es un e-commerce desarrollado en React.js utilizando Vite.js y TailwindCSS
 
 ### Demo
 
-![Demo de Shopi](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNzdmM2I5NmRhNWM2ZDQ5MDEwYjBiZDAyOTRhYmIwMmI1OGJkZTVhZSZlcD12MV9pbnRlcm5hbF9naWZzX2dpZklkJmN0PWc/gtOmlOjB0yE9mHueaS/giphy.gif)
+![Demo de Reactify](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNzdmM2I5NmRhNWM2ZDQ5MDEwYjBiZDAyOTRhYmIwMmI1OGJkZTVhZSZlcD12MV9pbnRlcm5hbF9naWZzX2dpZklkJmN0PWc/gtOmlOjB0yE9mHueaS/giphy.gif)
 
 ### Características
 
@@ -28,13 +28,13 @@ Shopi es un e-commerce desarrollado en React.js utilizando Vite.js y TailwindCSS
 
 ### Instalación
 
-Para instalar y ejecutar Shopi localmente, sigue estos pasos:
+Para instalar y ejecutar Reactify localmente, sigue estos pasos:
 
 1. Clona el repositorio: `git clone [URL del repositorio]`
-2. Navega hasta el directorio del proyecto: `cd Shopi`
+2. Navega hasta el directorio del proyecto: `cd Reactify`
 3. Instala las dependencias: `npm install`
 4. Inicia el servidor de desarrollo: `npm run dev`
-5. Abre tu navegador y visita `http://localhost:3000` para acceder a Shopi.
+5. Abre tu navegador y visita `http://localhost:3000` para acceder a Reactify.
 
 ### Recursos útiles
 
