@@ -3,6 +3,9 @@ import { createContext, useState, useEffect } from 'react'
 export const ShoppingCartContext = createContext()
 
 export const ShoppingCartProvider = ({children}) => {
+  // Logged User State
+  const [logged, setLogged] = useState(false)
+
   // Shopping Cart · Increment quantity
   const [count, setCount] = useState(0)
 
@@ -96,7 +99,9 @@ export const ShoppingCartProvider = ({children}) => {
       setSearchByTitle,
       filteredItems,
       searchByCategory,
-      setSearchByCategory
+      setSearchByCategory,
+      logged,
+      setLogged
     }}>
       {children}
     </ShoppingCartContext.Provider>
