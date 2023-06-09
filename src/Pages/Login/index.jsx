@@ -25,7 +25,9 @@ function Login() {
 
     context.setLogged(isLoggedIn)
     setLoginFailed(!isLoggedIn)
-    window.location.href = '/' // Redirige a la página principal con los productos.
+    if (isLoggedIn) {
+      window.location.href = '/' // Redirige a la página principal con los productos.
+    }
   }
 
   return (

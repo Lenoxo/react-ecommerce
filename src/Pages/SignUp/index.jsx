@@ -26,6 +26,9 @@ function SignUp() {
 
     // Actualizar el estado "logged" en el contexto
     context.setLogged(true)
+
+    // Redirigir a la página principal
+    window.location.href = '/'
   }
 
   return (
