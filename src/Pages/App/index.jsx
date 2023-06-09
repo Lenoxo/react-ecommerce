@@ -9,6 +9,7 @@ import SignUp from '../SignUp'
 import Navbar from '../../Components/Navbar'
 import CheckoutSideMenu from '../../Components/CheckoutSideMenu'
 import './App.css'
+import { Login } from '../Login'
 
 const AppRoutes = () => {
   let routes = useRoutes([
@@ -23,7 +24,8 @@ const AppRoutes = () => {
     { path: '/my-orders', element: <MyOrders /> },
     { path: '/my-orders/last', element: <MyOrder /> },
     { path: '/my-orders/:id', element: <MyOrder /> },
-    { path: '/sign-in', element: <SignUp /> },
+    { path: '/sign-up', element: <SignUp /> },
+    { path: '/login', element: <Login /> },
     { path: '/*', element: <NotFound /> },
   ])
 
