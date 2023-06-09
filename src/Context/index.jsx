@@ -39,11 +39,13 @@ export const ShoppingCartProvider = ({children}) => {
   const [searchByCategory, setSearchByCategory] = useState(null)
 
   useEffect(() => {
+    // Cambio el estado de logged acorde a lo guardado en LocalStorage.
+    setLogged(Boolean(JSON.parse(localStorage.getItem('logged'))))
     fetch('https://api.escuelajs.co/api/v1/products')
-      .then(response => response.json())
-      .then(data => setItems(data))
+    .then(response => response.json())
+    .then(data => setItems(data))
   }, [])
-
+  
   const filteredItemsByTitle = (items, searchByTitle) => {
     return items?.filter(item => item.title.toLowerCase().includes(searchByTitle.toLowerCase()))
   }
@@ -107,4 +109,3 @@ export const ShoppingCartProvider = ({children}) => {
     </ShoppingCartContext.Provider>
   )
 }
-

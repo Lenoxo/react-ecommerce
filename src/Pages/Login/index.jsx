@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react"
-import { Link } from "react-router-dom"
+import { Link, NavLink } from "react-router-dom"
 import Layout from "../../Components/Layout"
 import { ShoppingCartContext } from "../../Context"
 
@@ -25,11 +25,11 @@ function Login() {
 
     context.setLogged(isLoggedIn)
     setLoginFailed(!isLoggedIn)
+    window.location.href = '/' // Redirige a la página principal con los productos.
   }
 
   return (
     <Layout>
-      <h1 className="font-semibold text-xl mb-6">Login</h1>
       {loginFailed && (
         <p className="font-light bg-red-200 text-md rounded-lg p-2">
           Email or Password doesn't match, check them and try again
