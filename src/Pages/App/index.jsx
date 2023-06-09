@@ -1,5 +1,5 @@
 import { useRoutes, BrowserRouter } from 'react-router-dom'
-import { ShoppingCartProvider } from '../../Context'
+import { ShoppingCartProvider, ShoppingCartContext } from '../../Context'
 import Home from '../Home'
 import MyAccount from '../MyAccount'
 import MyOrder from '../MyOrder'
@@ -10,15 +10,18 @@ import Navbar from '../../Components/Navbar'
 import CheckoutSideMenu from '../../Components/CheckoutSideMenu'
 import './App.css'
 import { Login } from '../Login'
+import { useContext } from 'react'
 
 const AppRoutes = () => {
+  const context = useContext(ShoppingCartContext)
   let routes = useRoutes([
-    { path: '/', element: <Home /> },
-    { path: '/clothes', element: <Home /> },
-    { path: '/electronics', element: <Home /> },
-    { path: '/furnitures', element: <Home /> },
-    { path: '/toys', element: <Home /> },
-    { path: '/others', element: <Home /> },
+    // Solo si el usuario ha iniciado sesión (context.logged), se permite acceder a la página principal.
+    { path: '/', element: (context.logged) ? <Home /> : <Login /> },
+    { path: '/clothes', element: (context.logged) ? <Home /> : <Login />},
+    { path: '/electronics', element: (context.logged) ? <Home /> : <Login />},
+    { path: '/furnitures', element: (context.logged) ? <Home /> : <Login />},
+    { path: '/toys', element: (context.logged) ? <Home /> : <Login />},
+    { path: '/others', element: (context.logged) ? <Home /> : <Login />},
     { path: '/my-account', element: <MyAccount /> },
     { path: '/my-order', element: <MyOrder /> },
     { path: '/my-orders', element: <MyOrders /> },

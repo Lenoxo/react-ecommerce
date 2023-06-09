@@ -3,135 +3,155 @@ import { NavLink } from 'react-router-dom'
 import { ShoppingBagIcon } from '@heroicons/react/24/solid'
 import { ShoppingCartContext } from '../../Context'
 
-const NavbarLink = ({ to, onClick, children, isActive }) => (
-  <NavLink
-    to={to}
-    onClick={onClick}
-    className={isActive ? 'underline underline-offset-4' : undefined}
-  >
-    {children}
-  </NavLink>
-)
-
 const Navbar = () => {
   const context = useContext(ShoppingCartContext)
+  const activeStyle = 'underline underline-offset-4'
   let email = ''
+
+  const handleLogout = () => {
+    // Maneja el cierre de sesión
+    context.setLogged(false)
+    localStorage.setItem('logged', 'false')
+  }
   
   if (context.logged) {
+    // Si el usuario ha iniciado sesión, toma del localStorage su dirección de correo electrónico.
     email = JSON.parse(localStorage.getItem('user-data')).email
-  }
-  
-  const handleLogout = () => {
-    localStorage.setItem('logged', 'false')
-    context.setLogged(false)
-  }
-
-
-  const handleCategoryClick = (category) => {
-    if (!context.logged) {
-      window.location.href = '/login' // Redirigir a la página de login
-    } else {
-      context.setSearchByCategory(category)
-    }
   }
 
   return (
-    <nav className="flex justify-between items-center fixed z-10 top-0 w-full py-5 px-8 text-sm font-light">
-      <ul className="flex items-center gap-3">
-        <li className="font-semibold text-lg">
-          <NavbarLink to="/" onClick={() => handleCategoryClick()}>
+    <nav className='flex justify-between items-center fixed z-10 top-0 w-full py-5 px-8 text-sm font-light bg-white'>
+      <ul className='flex items-center gap-3'>
+        <li className='font-semibold text-lg'>
+          {/* Enlace al inicio */}
+          <NavLink to='/'>
             Shopi
-          </NavbarLink>
+          </NavLink>
         </li>
         <li>
-          <NavbarLink
-            to="/"
-            onClick={() => handleCategoryClick()}
-            isActive={false}
-          >
+          <NavLink
+            to='/'
+            onClick={() => context.setSearchByCategory()}
+            className={({ isActive }) =>
+              isActive ? activeStyle : undefined
+            }>
             All
-          </NavbarLink>
+          </NavLink>
         </li>
         <li>
-          <NavbarLink
-            to="/clothes"
-            onClick={() => handleCategoryClick('clothes')}
-            isActive={false}
-          >
+          {/* Enlace a la categoría "Clothes" */}
+          <NavLink
+            to='/clothes'
+            onClick={() => context.setSearchByCategory('clothes')}
+            className={({ isActive }) =>
+              isActive ? activeStyle : undefined
+            }>
             Clothes
-          </NavbarLink>
+          </NavLink>
         </li>
         <li>
-          <NavbarLink
-            to="/electronics"
-            onClick={() => handleCategoryClick('electronics')}
-            isActive={false}
-          >
+          {/* Enlace a la categoría "Electronics" */}
+          <NavLink
+            to='/electronics'
+            onClick={() => context.setSearchByCategory('electronics')}
+            className={({ isActive }) =>
+              isActive ? activeStyle : undefined
+            }>
             Electronics
-          </NavbarLink>
+          </NavLink>
         </li>
         <li>
-          <NavbarLink
-            to="/furnitures"
-            onClick={() => handleCategoryClick('furnitures')}
-            isActive={false}
-          >
+          {/* Enlace a la categoría "Furnitures" */}
+          <NavLink
+            to='/furnitures'
+            onClick={() => context.setSearchByCategory('furnitures')}
+            className={({ isActive }) =>
+              isActive ? activeStyle : undefined
+            }>
             Furnitures
-          </NavbarLink>
+          </NavLink>
         </li>
         <li>
-          <NavbarLink
-            to="/toys"
-            onClick={() => handleCategoryClick('toys')}
-            isActive={false}
-          >
+          {/* Enlace a la categoría "Toys" */}
+          <NavLink
+            to='/toys'
+            onClick={() => context.setSearchByCategory('toys')}
+            className={({ isActive }) =>
+              isActive ? activeStyle : undefined
+            }>
             Toys
-          </NavbarLink>
+          </NavLink>
         </li>
         <li>
-          <NavbarLink
-            to="/others"
-            onClick={() => handleCategoryClick('others')}
-            isActive={false}
-          >
+          {/* Enlace a la categoría "Others" */}
+          <NavLink
+            to='/others'
+            onClick={() => context.setSearchByCategory('others')}
+            className={({ isActive }) =>
+              isActive ? activeStyle : undefined
+            }>
             Others
-          </NavbarLink>
+          </NavLink>
         </li>
       </ul>
-      <ul className="flex items-center gap-3">
+      <ul className='flex items-center gap-3'>
+        {/* Si el usuario ha iniciado sesión */}
         {context.logged && (
           <>
-            <li className="text-black/60">{email}</li>
+            <li className='text-black/60'>
+            {/* Mostrar el correo electrónico del usuario */}
+              {email}
+            </li>
+            {/* Enlace a "My Orders" */}
             <li>
-              <NavbarLink to="/my-orders" isActive={false}>
+              <NavLink
+                to='/my-orders'
+                className={({ isActive }) =>
+                  isActive ? activeStyle : undefined
+                }>
                 My Orders
-              </NavbarLink>
+              </NavLink>
             </li>
+            {/* Enlace a "My Account" */}
             <li>
-              <NavbarLink to="/my-account" isActive={false}>
+              <NavLink
+                to='/my-account'
+                className={({ isActive }) =>
+                  isActive ? activeStyle : undefined
+                }>
                 My Account
-              </NavbarLink>
+              </NavLink>
             </li>
+            {/* Enlace para cerrar sesión */}
             <li>
-              <NavbarLink
-                to="/login"
-                isActive={false}
-                onClick={handleLogout}
-              >
-                Sign out
-              </NavbarLink>
+              <NavLink
+                to='/login'
+                className={({ isActive }) =>
+                  isActive ? activeStyle : undefined
+                }
+                onClick={handleLogout}>
+                Sign Out
+              </NavLink>
             </li>
-            <li className="flex items-center">
-              <ShoppingBagIcon className="h-6 w-6 text-black" />
+            <li className='flex items-center'>
+              {/* Icono del carrito de compras */}
+              <ShoppingBagIcon className='h-6 w-6 text-black'></ShoppingBagIcon>
+              {/* Mostrar la cantidad de productos en el carrito */}
               <div>{context.cartProducts.length}</div>
             </li>
           </>
         )}
+        {/* Si el usuario no ha iniciado sesión */}
         {!context.logged && (
           <li>
-            <NavbarLink to="/login" isActive={false}>
+            {/* Enlace para iniciar sesión */}
+            <NavLink
+              to='/login'
+              className={({ isActive }) =>
+                isActive ? activeStyle : undefined
+              }>
               Sign In
-            </NavbarLink>
+            </NavLink>
           </li>
         )}
       </ul>

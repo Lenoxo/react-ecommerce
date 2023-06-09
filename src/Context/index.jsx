@@ -39,8 +39,7 @@ export const ShoppingCartProvider = ({children}) => {
   const [searchByCategory, setSearchByCategory] = useState(null)
 
   useEffect(() => {
-    // Cambio el estado de logged acorde a lo guardado en LocalStorage.
-    setLogged(Boolean(JSON.parse(localStorage.getItem('logged'))))
+    setLogged(Boolean(JSON.parse(localStorage.getItem('logged')))) // Se actualiza el estado logged con el guardado en localStorage.
     fetch('https://api.escuelajs.co/api/v1/products')
     .then(response => response.json())
     .then(data => setItems(data))

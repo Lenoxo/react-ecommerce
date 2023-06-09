@@ -1,63 +1,77 @@
-import React, { useContext, useEffect, useState } from "react"
-import { Link, NavLink } from "react-router-dom"
+import { useContext, useState } from "react"
+import { Link, useNavigate } from "react-router-dom" // Importo Link y useNavigate para la navegación.
 import Layout from "../../Components/Layout"
 import { ShoppingCartContext } from "../../Context"
 
+// Página que permite iniciar sesión, o permite el acceso a crear una nueva cuenta.
 function Login() {
   const context = useContext(ShoppingCartContext)
+  // Estado que cambia si el login es false.
   const [loginFailed, setLoginFailed] = useState(false)
+  // Guardo los datos del usuario en localStorage, dentro de userSavedData.
+  const userSavedData = JSON.parse(localStorage.getItem("user-data"))
+  const navigate = useNavigate()
 
-  useEffect(() => {
-    localStorage.setItem("logged", JSON.stringify(context.logged))
-  }, [context.logged])
-
-  const handleFormSubmit = (event) => {
+  const handleLogin = (event) => {
     event.preventDefault()
+    // Se guarda la información puesta por el usuario en el form dentro de loginData.
     const loginData = {
       email: event.target[0].value,
       password: event.target[1].value,
     }
-    const userSavedData = JSON.parse(localStorage.getItem("user-data"))
+
+    // Devuelve true/false dependiendo de si los datos de loginData coinciden con los de userSavedData.
     const isLoggedIn =
       userSavedData &&
       userSavedData.email === loginData.email &&
       userSavedData.password === loginData.password
 
     context.setLogged(isLoggedIn)
-    setLoginFailed(!isLoggedIn)
-    if (isLoggedIn) {
-      window.location.href = '/' // Redirige a la página principal con los productos.
+    
+    if (isLoggedIn) { // Solo cuando isLoggedIn sea true, se ejecuta este bloque de codigo.
+      localStorage.setItem("logged", JSON.stringify(isLoggedIn))
+      navigate("/") // Redirige a la página principal.
     }
+    // Se cambia el estado de loginFailed.
+    setLoginFailed(!isLoggedIn)
   }
-
   return (
     <Layout>
+      <h1 className="font-medium text-xl">Welcome Back</h1>
+      {/* renderiza un mensaje para el usuario si el login falla. */}
       {loginFailed && (
         <p className="font-light bg-red-200 text-md rounded-lg p-2">
           Email or Password doesn't match, check them and try again
         </p>
       )}
-      <form onSubmit={handleFormSubmit} className="flex flex-col items-center space-y-4 pt-4">
-        <label className="font-semibold text-lg">Your Email</label>
+      <form
+        onSubmit={handleLogin}
+        className="flex flex-col items-center space-y-4 pt-4"
+      >
+        <label className="font-medium text-lg">Your Email</label>
         <input
           className="text-center bg-zinc-300 border border-zinc-900 rounded-lg py-2"
           type="text"
           placeholder="example@gmail.com"
         />
-        <label className="font-semibold text-lg">Your Password</label>
+        <label className="font-medium text-lg">Your Password</label>
         <input
           className="text-center bg-zinc-300 border border-zinc-900 rounded-lg py-2"
           type="password"
           placeholder="Buy Something"
         />
-        <button className="p-4 text-lg font-semibold bg-black text-white w-full rounded-lg" type="submit">
+        <button
+          className="p-4 text-lg font-semibold bg-black text-white w-full rounded-lg"
+          type="submit"
+        >
           Login
         </button>
         <label className="font-light text-lg">Not having an account?</label>
-        <Link to="/sign-up" className="w-full">
-          <button className="p-4 text-lg font-semibold bg-inherit text-inherit w-full rounded-lg border border-black">
-            Create Your Account
-          </button>
+        <Link
+          to="/sign-up"
+          className="p-4 text-lg font-semibold bg-inherit text-inherit w-full rounded-lg border border-black disabled:text-zinc-300 disabled:border-zinc-300 text-center"
+        >
+          Sign Up
         </Link>
       </form>
     </Layout>
