@@ -1,39 +1,40 @@
 import { useRoutes, BrowserRouter } from 'react-router-dom'
+import { ShoppingCartProvider, ShoppingCartContext } from '../Context'
 import { Home } from '../Home'
 import { MyAccount } from '../MyAccount'
 import { MyOrder } from '../MyOrder'
 import { MyOrders } from '../MyOrders'
-import { SignIn } from '../SignIn'
 import { NotFound } from '../NotFound'
+import { SignUp } from '../SignUp'
 import { Navbar } from '../../Components/Navbar'
-import { ShoppingCartProvider } from '../Context'
 import { CheckoutSideMenu } from '../../Components/CheckoutSideMenu'
-import './index.css'
+import { Login } from '../Login'
+import { useContext } from 'react'
 
 const AppRoutes = () => {
-  // Para las rutas con useRoutes, es necesario guardar dentro de un array objetos con esta sintaxis.
+  const context = useContext(ShoppingCartContext)
   let routes = useRoutes([
-    { path: '/', element: <Home /> },
-    { path: '/clothes', element: <Home /> },
-    { path: '/electronics', element: <Home /> },
-    { path: '/furnitures', element: <Home /> },
-    { path: '/toys', element: <Home /> },
-    { path: '/others', element: <Home /> },
+    // Solo si el usuario ha iniciado sesión (context.logged), se permite acceder a la página principal.
+    { path: '/', element: (context.logged) ? <Home /> : <Login /> },
+    { path: '/clothes', element: (context.logged) ? <Home /> : <Login />},
+    { path: '/electronics', element: (context.logged) ? <Home /> : <Login />},
+    { path: '/furnitures', element: (context.logged) ? <Home /> : <Login />},
+    { path: '/toys', element: (context.logged) ? <Home /> : <Login />},
+    { path: '/others', element: (context.logged) ? <Home /> : <Login />},
     { path: '/my-account', element: <MyAccount /> },
     { path: '/my-order', element: <MyOrder /> },
-    { path: '/my-orders/last', element: <MyOrder /> },
-    // Con usar :id, se deja esta ultima parte de la ruta como una variable.
-    { path: '/my-orders/:id', element: <MyOrder /> },
     { path: '/my-orders', element: <MyOrders /> },
-    { path: '/sign-in', element: <SignIn /> },
-    { path: '/*', element: <NotFound /> }, // Captura todas las rutas no definidas
+    { path: '/my-orders/last', element: <MyOrder /> },
+    { path: '/my-orders/:id', element: <MyOrder /> },
+    { path: '/sign-up', element: <SignUp /> },
+    { path: '/login', element: <Login /> },
+    { path: '/*', element: <NotFound /> },
   ])
-  
+
   return routes
 }
 
-
-function App() {
+const App = () => {
   return (
     <ShoppingCartProvider>
       <BrowserRouter>

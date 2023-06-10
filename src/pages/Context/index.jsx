@@ -4,6 +4,8 @@ const API = "https://api.escuelajs.co/api/v1/products"
 const ShoppingCartContext = createContext()
 
 function ShoppingCartProvider({ children }) {
+  // Estado de inicio de sesión
+  const [logged, setLogged] = useState(false)
   // Estado de carga
   const [isLoading, setIsLoading] = useState(true)
   // Relacionado a ProductDetail
@@ -38,6 +40,7 @@ function ShoppingCartProvider({ children }) {
   const [products, setProducts] = useState(null)
   // Aquí uso useEffect porque estoy consumiendo la API de Platzi Fake Store
   useEffect(() => {
+    setLogged(Boolean(JSON.parse(localStorage.getItem('logged')))) // Se actualiza el estado logged con el guardado en localStorage.
     fetch(API)
     .then((response) => response.json())
     .then((data) => {
@@ -90,11 +93,11 @@ function ShoppingCartProvider({ children }) {
     // Exporto así el elemento para que sea un poco más facil de leer desde otros archivos, como en App/index.jsx
     <ShoppingCartContext.Provider
     value={{
-      openProductDetail,
-      closeProductDetail,
-      isProductDetailOpen,
-      productToShow,
-      setProductToShow,
+        openProductDetail,
+        closeProductDetail,
+        isProductDetailOpen,
+        productToShow,
+        setProductToShow,
         cartProducts,
         setCartProducts,
         isCheckoutSideMenuOpen,
@@ -109,7 +112,9 @@ function ShoppingCartProvider({ children }) {
         filteredProducts,
         productCategoryValue,
         setProductCategoryValue,
-        isLoading
+        isLoading,
+        logged,
+        setLogged
       }}
     >
       {children}
