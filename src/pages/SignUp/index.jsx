@@ -29,31 +29,31 @@ function SignUp() {
       <h1 className="font-medium text-xl">Sign Up</h1>
       <form
         onSubmit={handleSignUp}
-        className="flex flex-col items-center space-y-4 pt-4"
+        className="flex flex-col text-sm items-start border rounded-lg mt-4 border-inherit space-y-4 p-4 dark:bg-zinc-800 dark:text-white dark:border-inherit"
       >
-        <label className="font-medium text-lg">Your Name</label>
+        <label className="font-medium">Your Name</label>
         <input
-          className="text-center bg-zinc-300 border border-zinc-900 rounded-lg py-2"
+          className="text-start bg-zinc-300 dark:bg-zinc-900 border border-inherit dark:border-zinc-800 rounded-lg p-2"
           type="text"
           name="name"
           placeholder="Juan Juanez Perez"
         />
-        <label className="font-medium text-lg">Your Email</label>
+        <label className="font-medium">Your Email</label>
         <input
-          className="text-center bg-zinc-300 border border-zinc-900 rounded-lg py-2"
+          className="text-start bg-zinc-300 dark:bg-zinc-900 border border-inherit dark:border-zinc-800 rounded-lg p-2"
           type="text"
           name="email"
           placeholder="example@gmail.com"
         />
-        <label className="font-medium text-lg">Create Your Password</label>
+        <label className="font-medium">Create Your Password</label>
         <input
-          className="text-center bg-zinc-300 border border-zinc-900 rounded-lg py-2"
+          className="text-start bg-zinc-300 dark:bg-zinc-900 border border-inherit dark:border-zinc-800 rounded-lg p-2"
           type="password"
           name="password"
           placeholder="Buy Something"
         />
         <button
-          className="p-4 text-lg font-semibold bg-black text-white w-full rounded-lg"
+          className="p-4 font-semibold bg-black text-white w-full rounded-lg"
           type="submit"
         >
           Create Account

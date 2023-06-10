@@ -21,18 +21,18 @@ function MyAccount() {
       <h1 className='font-medium text-xl'>My Account</h1>
 
       {/* Información del usuario */}
-      <div className='flex flex-col text-md font-normal mt-4 items-center border border-black rounded-lg px-8 py-4'>
+      <div className='w-4/5 lg:w-2/4 flex flex-col text-sm font-normal mt-4 items-start border border-inherit rounded-lg px-8 py-4'>
         <p>Name</p>
         {/* Mostrar el nombre del usuario */}
-        <p className='font-light mb-4 rounded-lg bg-zinc-200 p-2 text-sm'>{name}</p>
+        <p className='w-full font-light mb-4 rounded-lg bg-zinc-200 p-2 dark:bg-zinc-800 overflow-auto'>{name}</p>
 
         <p>Email</p>
         {/* Mostrar el email del usuario */}
-        <p className='font-light mb-4 rounded-lg bg-zinc-200 p-2 text-sm'>{email}</p>
+        <p className='w-full font-light mb-4 rounded-lg bg-zinc-200 p-2 dark:bg-zinc-800 overflow-auto'>{email}</p>
 
         <p>Password</p>
         {/* Mostrar la contraseña del usuario */}
-        <p className='font-light mb-4 rounded-lg bg-zinc-200 p-2 text-sm'>{password}</p>
+        <p className='w-full font-light mb-4 rounded-lg bg-zinc-200 p-2 dark:bg-zinc-800 overflow-auto'>{password}</p>
 
         {/* Enlace de cierre de sesión */}
         <NavLink to='/login' onClick={handleLogout} className='w-full'>
