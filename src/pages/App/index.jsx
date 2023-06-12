@@ -6,10 +6,11 @@ import { MyOrder } from '../MyOrder'
 import { MyOrders } from '../MyOrders'
 import { NotFound } from '../NotFound'
 import { SignUp } from '../SignUp'
-import { Navbar } from '../../Components/Navbar'
+import { Navbar } from '../../Components/NavbarAndTabBar/Navbar'
 import { CheckoutSideMenu } from '../../Components/CheckoutSideMenu'
 import { Login } from '../Login'
 import { useContext } from 'react'
+import { TabBar } from '../../Components/NavbarAndTabBar/TabBar'
 
 const AppRoutes = () => {
   const context = useContext(ShoppingCartContext)
@@ -39,6 +40,7 @@ const App = () => {
     <ShoppingCartProvider>
       <BrowserRouter>
         <AppRoutes />
+        <TabBar />
         <Navbar />
         <CheckoutSideMenu />
       </BrowserRouter>
