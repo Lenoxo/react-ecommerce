@@ -6,7 +6,8 @@ import { MyOrder } from '../MyOrder'
 import { MyOrders } from '../MyOrders'
 import { NotFound } from '../NotFound'
 import { SignUp } from '../SignUp'
-import { Navbar } from '../../Components/NavbarAndTabBar/Navbar'
+// import { Navbar } from '../../Components/NavbarAndTabBar/Navbar'
+import { Nav } from '../../Components/NavbarAndTabBar/Navbar/pruebita'
 import { CheckoutSideMenu } from '../../Components/CheckoutSideMenu'
 import { Login } from '../Login'
 import { useContext } from 'react'
@@ -41,7 +42,7 @@ const App = () => {
       <BrowserRouter>
         <AppRoutes />
         <TabBar />
-        <Navbar />
+        <Nav />
         <CheckoutSideMenu />
       </BrowserRouter>
     </ShoppingCartProvider>
