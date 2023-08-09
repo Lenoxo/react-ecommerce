@@ -1,54 +1,54 @@
 # Reactify
 
-Reactify es un e-commerce desarrollado en React.js utilizando Vite.js y TailwindCSS. La aplicación cuenta con las siguientes características principales:
+Reactify is an e-commerce website developed in React.js using Vite.js and TailwindCSS. The application features the following main functionalities:
 
-- **Búsqueda de productos:** Permite buscar productos por categoría y título para facilitar la navegación y encontrar los productos deseados.
-- **Añadir productos al carrito:** Permite añadir productos al carrito de compras con un solo clic, lo que facilita la selección y compra de múltiples productos.
-- **Ver historial de pedidos:** Proporciona un historial de pedidos donde los usuarios pueden revisar y realizar un seguimiento de sus compras anteriores.
-- **Modo oscuro:** Ofrece una opción de modo oscuro para mejorar la experiencia de usuario en condiciones de poca luz.
+- **Product Search:** Allows users to search for products by category and title to facilitate navigation and find desired products.
+- **Add Products to Cart:** Enables users to add products to the shopping cart with a single click, making it easy to select and purchase multiple items.
+- **View Order History:** Provides an order history where users can review and track their previous purchases.
+- **Dark Mode:** Offers a dark mode option to enhance the user experience in low-light conditions.
 
-## Tabla de contenidos:
+## Table of Contents:
 - [Demo](#demo)
-- [Características](#características)
-- [Instalación](#instalación)
-- [Recursos útiles](#recursos-útiles)
-- [Licencia](#licencia)
-- [Autor](#autor)
+- [Features](#features)
+- [Installation](#installation)
+- [Useful Resources](#useful-resources)
+- [License](#license)
+- [Author](#author)
 
 ### Demo
 
-![Demo de Reactify](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNzdmM2I5NmRhNWM2ZDQ5MDEwYjBiZDAyOTRhYmIwMmI1OGJkZTVhZSZlcD12MV9pbnRlcm5hbF9naWZzX2dpZklkJmN0PWc/gtOmlOjB0yE9mHueaS/giphy.gif)
+![Reactify Demo](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNzdmM2I5NmRhNWM2ZDQ5MDEwYjBiZDAyOTRhYmIwMmI1OGJkZTVhZSZlcD12MV9pbnRlcm5hbF9naWZzX2dpZklkJmN0PWc/gtOmlOjB0yE9mHueaS/giphy.gif)
 
-### Características
+### Features
 
-- **Búsqueda de productos:** Permite a los usuarios buscar productos según su categoría y título, facilitando la búsqueda de artículos específicos.
-- **Añadir productos al carrito:** Los usuarios pueden agregar productos al carrito de compras con un solo clic, lo que agiliza el proceso de selección y compra.
-- **Ver historial de pedidos:** Los usuarios tienen acceso a un historial de pedidos donde pueden revisar y realizar un seguimiento de sus compras anteriores.
-- **Modo oscuro:** La aplicación ofrece una opción de modo oscuro que proporciona una experiencia visual más cómoda en ambientes de poca iluminación.
+- **Product Search:** Users can search for products based on their category and title, making it easy to find specific items.
+- **Add Products to Cart:** Users can quickly add products to the shopping cart with a single click, streamlining the selection and purchasing process.
+- **View Order History:** Users have access to an order history where they can review and track their past purchases.
+- **Dark Mode:** The application offers a dark mode option that provides a more comfortable visual experience in low-light environments.
 
-### Instalación
+### Installation
 
-Para instalar y ejecutar Reactify localmente, sigue estos pasos:
+To install and run Reactify locally, follow these steps:
 
-1. Clona el repositorio: `git clone [URL del repositorio]`
-2. Navega hasta el directorio del proyecto: `cd Reactify`
-3. Instala las dependencias: `npm install`
-4. Inicia el servidor de desarrollo: `npm run dev`
-5. Abre tu navegador y visita `http://localhost:3000` para acceder a Reactify.
+1. Clone the repository: `git clone [repository URL]`
+2. Navigate to the project directory: `cd Reactify`
+3. Install the dependencies: `npm install`
+4. Start the development server: `npm run dev`
+5. Open your browser and visit `http://localhost:3000` to access Reactify.
 
-### Recursos útiles
+### Useful Resources
 
-- **[Documentación oficial de React.js](https://react.dev/)**: Recurso fundamental para aprender sobre React.js y su ecosistema.
-- **[Documentación oficial de Vite.js](https://vitejs.dev/)**: Documentación de Vite.js, una herramienta de desarrollo rápida para proyectos basados en JavaScript.
-- **[Documentación oficial de TailwindCSS](https://tailwindcss.com/)**: Recurso para aprender sobre TailwindCSS, un framework CSS altamente personalizable y fácil de usar.
-- **[Curso de React.js con Vite.js y TailwindCSS](https://platzi.com/cursos/react-vite-tailwindcss/)**: Recurso donde aprendí a crear la este proyecto y posteriormente fui dandole mi estilo.
+- **[Official React.js Documentation](https://react.dev/)**: Essential resource for learning about React.js and its ecosystem.
+- **[Official Vite.js Documentation](https://vitejs.dev/)**: Documentation for Vite.js, a fast development tool for JavaScript-based projects.
+- **[Official TailwindCSS Documentation](https://tailwindcss.com/)**: Resource for learning about TailwindCSS, a highly customizable and user-friendly CSS framework.
+- **[React.js Course with Vite.js and TailwindCSS](https://platzi.com/cursos/react-vite-tailwindcss/)**: Resource where I learned to create this project and later customized it to my style.
 
-### Licencia
+### License
 
-Este proyecto está licenciado bajo la [Licencia MIT](LICENSE).
+This project is licensed under the [MIT License](LICENSE).
 
-### Autor
+### Author
 
 Lenoxo (Emanuel Padilla)
 
-No dudes en contactarme en [emanuehl159@gmail.com](mailto:emanuehl159@gmail.com) si tienes alguna pregunta, sugerencia o comentario.
+Feel free to contact me at [emanuehl159@gmail.com](mailto:emanuehl159@gmail.com) if you have any questions, suggestions, or comments.
